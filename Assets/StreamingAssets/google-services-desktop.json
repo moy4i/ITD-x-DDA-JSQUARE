@@ -1,0 +1,32 @@
+{
+  "project_info": {
+    "project_number": "44333458132",
+    "firebase_url": "https://jsquare-10ab6-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "jsquare-10ab6",
+    "storage_bucket": "jsquare-10ab6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44333458132:ios:7bc558261f171664c19141",
+        "android_client_info": {
+          "package_name": "JSquare"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyACtS7vrhYbNMXRuM7Qt7AfIbALFYRWesA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
