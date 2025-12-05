@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9126264158435779991}
   - component: {fileID: 1394761843234574079}
   m_Layer: 0
-  m_Name: dog
+  m_Name: dragon_card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

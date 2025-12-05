@@ -18,12 +18,12 @@ MonoBehaviour:
     m_Storage: []
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 4992587315061538718
-      m_GuidHigh: 45979825226085014
+      m_GuidLow: 4892888871715709346
+      m_GuidHigh: 4560475227539034503
     m_SerializedTextureGuid:
-      m_GuidLow: 16034167527495777760
-      m_GuidHigh: 16581729694057698072
-    m_Size: {x: 0.1776, y: 0.1}
+      m_GuidLow: 17344596780439251376
+      m_GuidHigh: 14042293615038863241
+    m_Size: {x: 0.1, y: 0.14145161}
     m_SpecifySize: 1
-    m_Name: dog
+    m_Name: dragon_card
     m_Texture: {fileID: 0}
