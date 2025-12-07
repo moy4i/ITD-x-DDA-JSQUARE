@@ -4,6 +4,7 @@ using Firebase.Auth;
 using System.Threading.Tasks;
 using Firebase.Extensions;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DatabaseController : MonoBehaviour
 {
@@ -69,11 +70,12 @@ public class DatabaseController : MonoBehaviour
 
     public void SignIn()
     {
-    if (string.IsNullOrEmpty(SignInEmailInput.text)&&string.IsNullOrEmpty(SignInPasswordInput.text))
-        {   
-            showNotificationMessage("Error","Email or Password is empty");
-            return;
-        }
+        if (string.IsNullOrEmpty(SignInEmailInput.text)&&string.IsNullOrEmpty(SignInPasswordInput.text))
+            {   
+                showNotificationMessage("Error","Email or Password is empty");
+                return;
+            }
+        
        
        
        var createTask= FirebaseAuth.DefaultInstance.SignInWithEmailAndPasswordAsync(SignInEmailInput.text, SignInPasswordInput.text);
@@ -85,7 +87,12 @@ public class DatabaseController : MonoBehaviour
             showNotificationMessage("Error","Email or Password is empty");
             return;
         }
-
+        if (task.IsFaulted || task.IsCanceled)
+        {
+            Debug.LogError("Error signing in user!");
+            showNotificationMessage("Error","Error signing in user!");
+            return;
+        }
         if (task.IsCompleted)
         {
             Debug.Log("User signed in successfully!");
@@ -95,11 +102,11 @@ public class DatabaseController : MonoBehaviour
             Debug.Log($"Signed in user UID: {uid}");   
 
             
-            loginPanel.SetActive(false);
-            
-
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
         }
         });
+
+        
     }
 
     public void CloseNotifPanel()
