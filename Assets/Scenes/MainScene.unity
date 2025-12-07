@@ -1185,11 +1185,11 @@ PrefabInstance:
       addedObject: {fileID: 436358034}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2512387470528047719, guid: 48cb3fb68c91eb94999fd99957eb0cae, type: 3}
-      insertIndex: 4
-      addedObject: {fileID: 331264289}
-    - targetCorrespondingSourceObject: {fileID: 2512387470528047719, guid: 48cb3fb68c91eb94999fd99957eb0cae, type: 3}
       insertIndex: -1
       addedObject: {fileID: 331264288}
+    - targetCorrespondingSourceObject: {fileID: 2512387470528047719, guid: 48cb3fb68c91eb94999fd99957eb0cae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 331264289}
   m_SourcePrefab: {fileID: 100100000, guid: 48cb3fb68c91eb94999fd99957eb0cae, type: 3}
 --- !u!114 &331264286 stripped
 MonoBehaviour:
@@ -1239,7 +1239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackedImageManager: {fileID: 331264288}
   placeablePrefabs:
-  - {fileID: 5947964024254150731, guid: 1870113dcf75cd74b96f6d2f3b7ac930, type: 3}
+  - {fileID: 6762368706532747972, guid: 78bba9461bd1d3042a35f590badd4e9f, type: 3}
 --- !u!1 &332374253
 GameObject:
   m_ObjectHideFlags: 0

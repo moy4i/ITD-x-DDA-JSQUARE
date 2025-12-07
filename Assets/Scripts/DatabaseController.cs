@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 using Firebase.Extensions;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Firebase.Database;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 
 public class DatabaseController : MonoBehaviour
 {
@@ -26,6 +30,11 @@ public class DatabaseController : MonoBehaviour
         signUpPanel.SetActive(true);
     }
 
+    public void SavePlayer(Player player)
+    {
+        string json = JsonUtility.ToJson(player);
+        db.Child("Players").Child(player.id).SetRawJsonValueAsync(json);
+    }
     private void showNotificationMessage(string title, string message)
     {
         notif_Title_Text.text = "" + title;
@@ -59,9 +68,12 @@ public class DatabaseController : MonoBehaviour
             showNotificationMessage("Success","User created successfully, please sign in!");
 
             var uid = task.Result.User.UserId;
-            Debug.Log($"User ID: {uid}");   
-   
-            var player = new Player(uid, "Name");
+
+            Player newPlayer = new Player(uid, "dragon");  
+            SavePlayer(newPlayer);
+
+
+            Debug.Log($"User ID: {uid}");
         }
 
         
@@ -117,11 +129,22 @@ public class DatabaseController : MonoBehaviour
         notificationPanel.SetActive(false);
     }
 
-    
+    public void AddPet(string uid, string PetName)
+    {
+        DatabaseReference petRef = db.Child("Players").Child(uid).Child("pets").Child(PetName);
+        Dictionary<string, object> stats=  new Dictionary<string, object>();
+        stats["level"] = 1;
+        stats["hunger"] = 50;
+        stats["xp"] = 0;
+
+        petRef.UpdateChildrenAsync(stats);
+
+    }
+    private DatabaseReference db;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        db = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
 }
