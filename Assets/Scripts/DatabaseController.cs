@@ -69,7 +69,7 @@ public class DatabaseController : MonoBehaviour
 
             var uid = task.Result.User.UserId;
 
-            Player newPlayer = new Player(uid, "dragon");  
+            Player newPlayer = new Player(uid, "dog");  
             SavePlayer(newPlayer);
 
 
