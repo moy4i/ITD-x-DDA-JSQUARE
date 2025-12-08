@@ -18,12 +18,12 @@ MonoBehaviour:
     m_Storage: []
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 5068690974881960339
-      m_GuidHigh: 7576546549608516789
+      m_GuidLow: 5107057354670099455
+      m_GuidHigh: 2078549009684271517
     m_SerializedTextureGuid:
       m_GuidLow: 17344596780439251376
       m_GuidHigh: 14042293615038863241
-    m_Size: {x: 0.1, y: 0.14145161}
+    m_Size: {x: 0.2, y: 0.28290322}
     m_SpecifySize: 1
     m_Name: dragon
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: 4e7729b062e0f0b4899720c4a43fe0c2, type: 3}
