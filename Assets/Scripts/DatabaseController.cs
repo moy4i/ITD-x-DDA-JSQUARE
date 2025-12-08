@@ -140,11 +140,15 @@ public class DatabaseController : MonoBehaviour
         petRef.UpdateChildrenAsync(stats);
 
     }
+
+    //Hamburger Menu Code
     private DatabaseReference db;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         db = FirebaseDatabase.DefaultInstance.RootReference;
     }
+
+
 
 }
