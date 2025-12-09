@@ -2,15 +2,39 @@ using UnityEngine;
 
 public class SideMenuController : MonoBehaviour
 {
-    public GameObject HamburgerMenu;  // assign your panel here
+    public GameObject sideMenu;
+    public GameObject petsOwnedPage;
+    public GameObject toysPage;
 
-    public void OpenPanel()
+    // --- Open the side menu ---
+    public void OpenMenu()
     {
-        HamburgerMenu.SetActive(true);
+        sideMenu.SetActive(true);
     }
 
-    public void ClosePanel()
+    // --- Close the side menu ---
+    public void CloseMenu()
     {
-        HamburgerMenu.SetActive(false);
+        sideMenu.SetActive(false);
+    }
+
+    // --- Open Pets Owned page ---
+    public void OpenPetsOwned()
+    {
+        petsOwnedPage.SetActive(true);
+        toysPage.SetActive(false); // optional, prevents overlap
+    }
+
+    // --- Open Toys page ---
+    public void OpenToysPage()
+    {
+        toysPage.SetActive(true);
+        petsOwnedPage.SetActive(false); // optional
+    }
+
+    public void ClosePage()
+    {
+        petsOwnedPage.SetActive(false);
+        toysPage.SetActive(false);
     }
 }
