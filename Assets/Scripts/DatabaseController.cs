@@ -129,19 +129,25 @@ public class DatabaseController : MonoBehaviour
         notificationPanel.SetActive(false);
     }
 
-    public void AddPet(string uid, string PetName)
+    public void AddPet(string uid, string petType)
     {
-        DatabaseReference petRef = db.Child("Players").Child(uid).Child("pets").Child(PetName);
-        Dictionary<string, object> stats=  new Dictionary<string, object>();
-        stats["level"] = 1;
-        stats["hunger"] = 50;
-        stats["xp"] = 0;
+        Pet newPet = new Pet(petType);
+        string json = JsonUtility.ToJson(newPet);
 
-        petRef.UpdateChildrenAsync(stats);
-
+        db.Child("Players").Child(uid).Child("pets").Child(petType).SetRawJsonValueAsync(json);
     }
 
-    //Hamburger Menu Code
+    public void UnlockPetForPlayer(string petType)
+    {
+        string uid = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
+
+        Pet newPet = new Pet(petType);
+        string json = JsonUtility.ToJson(newPet);
+
+        db.Child("Players").Child(uid).Child("pets").Child(petType).SetRawJsonValueAsync(json);
+
+        Debug.Log($"Unlocked new pet: {petType}");
+    }
     private DatabaseReference db;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

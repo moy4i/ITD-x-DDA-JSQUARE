@@ -1,18 +1,16 @@
+using System.Collections.Generic;
+
 [System.Serializable]
 public class Player
 {
-    public string id;          // Firebase UID
-    public string petType;     // "dragon", "cat", or "turtle"
-    public int petLevel;
-    public int petHunger;
-    public int petHappiness;
+    public string id;                // Firebase UID
+    public string username;
+    public List<Pet> pets;    // MANY pets
 
-    public Player(string uid, string chosenPet)
+    public Player(string uid, string name)
     {
         id = uid;
-        petType = chosenPet;
-        petLevel = 1;
-        petHunger = 100;
-        petHappiness = 100;
+        username = name;
+        pets = new List<Pet>();
     }
 }
