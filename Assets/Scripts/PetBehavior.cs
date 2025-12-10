@@ -10,24 +10,18 @@ public class PetBehaviour : MonoBehaviour
 
     [Header("UI References (Assign inside prefab)")]
     public GameObject interactMenu;
-    public Slider hungerBar;
     public Slider happinessBar;
-    public Slider levelBar;
     public TextMeshProUGUI levelText;
 
     [Header("Settings")]
     public int maxLevel = 10;
     public int happinessToLevel = 100;  // Each level requires more happiness
-    public float hungerDecreaseRate = 1f;  // every X seconds
+
     
     void Start()
     {
         // Initialize UI
-        UpdateUI();
-
-        // Start hunger drain
-        StartCoroutine(HungerRoutine());
-    }
+        UpdateUI();    }
 
     // Called by button inside prefab
     public void ToggleInteractMenu()
@@ -40,8 +34,6 @@ public class PetBehaviour : MonoBehaviour
     public void PetAction()
     {
         petData.happiness += 5;
-        petData.hunger -= 1;
-
         LevelCheck();
         UpdateUI();
         Debug.Log("Pet action on object: " + gameObject.name);
@@ -52,13 +44,11 @@ public class PetBehaviour : MonoBehaviour
     // FEEDING BUTTON
     public void FeedAction()
     {
-        petData.hunger += 20;
-        if (petData.hunger > 100) petData.hunger = 100;
+        food++;
+        if (food > maxFood) food = maxFood;
 
-        UpdateUI();
-        Debug.Log("Pet action on object: " + gameObject.name);
-
-        // SaveToFirebase();
+        UpdateFoodUI();
+        Debug.Log("Fed pet. Hunger now: " + food);
     }
 
     // LEVEL-UP LOGIC
@@ -77,46 +67,82 @@ public class PetBehaviour : MonoBehaviour
     // Update sliders and text
     private void UpdateUI()
     {
-        if (hungerBar != null)
-            hungerBar.value = petData.hunger / 100f;
 
         if (happinessBar != null)
             happinessBar.value = petData.happiness / (float)happinessToLevel;
 
-        if (levelBar != null)
-            levelBar.value = petData.level / (float)maxLevel;
-
         if (levelText != null)
-            levelText.text = "LVL " + petData.level;
+            levelText.text = petData.level.ToString();
 
         Debug.Log("UI update: Happiness=" + petData.happiness + " Hunger=" + petData.hunger);
     }
 
-    // HUNGER GOES DOWN OVER TIME
-    IEnumerator HungerRoutine()
+
+
+    //Hunger Bar Section
+    [Header("Hunger Bar")]
+    public int food =5;
+    public int maxFood=5 ;
+    private float hungerDecreaseRate = 60f; // seconds
+    public Sprite emptyFood;
+    public Sprite fullFood;
+    public Image[] foodImages;
+    private float timer =0f;
+
+    void Update()
     {
-        while (true)
+        timer += Time.deltaTime;
+        if(timer >= hungerDecreaseRate)
         {
-            yield return new WaitForSeconds(hungerDecreaseRate);
-
-            petData.hunger -= 2;
-            if (petData.hunger < 0) petData.hunger = 0;
-
-            // PET DIES?
-            if (petData.hunger == 0)
+            timer =0f;
+            food--;
+            if (food==0)
             {
-                Debug.Log("Pet has died.");
+                Debug.Log("Pet has died of hunger.");
                 // Handle death screen or deletion here
                 // SaveToFirebase();
-                yield break;
             }
+            UpdateFoodUI();
+        }
 
-            UpdateUI();
+        for (int i = 0; i< foodImages.Length; i++)
+        {
+        
+            if(i<food)
+            {
+                foodImages[i].sprite = fullFood;
+            }
+            else
+            {
+                foodImages[i].sprite = emptyFood;
+            }
+            
+            if(i<maxFood)
+            {
+                foodImages[i].enabled =true;
+
+            }
+            else
+            {
+                foodImages[i].enabled = false;
+            }
+        }
+    }
+
+    void UpdateFoodUI()
+    {
+        for (int i = 0; i < foodImages.Length; i++)
+        {
+            if (i < food)
+                foodImages[i].sprite = fullFood;
+            else
+                foodImages[i].sprite = emptyFood;
+
+            foodImages[i].enabled = i < maxFood;
         }
     }
 
 
-    
 
     // ---------- OPTIONAL FIREBASE SAVE ----------
     /*
