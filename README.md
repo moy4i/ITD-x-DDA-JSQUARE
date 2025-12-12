@@ -74,7 +74,10 @@ Main features include:
 - You can reopen it anytime via *Hamburger Menu → Tutorial*.
 
 ### 5.2 Objective: Evolve at least 1 pet
-Your 
+Your goal is to:
+1. Increase the pet's happiness level
+2. Reach Reach pet happiness level 10 to unlock the evolution
+3. Evolve the pet
 
 ---
 
