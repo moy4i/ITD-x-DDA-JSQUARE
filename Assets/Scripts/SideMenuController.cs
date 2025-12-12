@@ -26,6 +26,8 @@ public class SideMenuController : MonoBehaviour
     {
         petsOwnedPage.SetActive(true);
         toysPage.SetActive(false); // optional, prevents overlap
+
+
     }
 
     // --- Open Toys page ---

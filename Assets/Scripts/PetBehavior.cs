@@ -10,6 +10,8 @@ public class PetBehaviour : MonoBehaviour
 
     [Header("UI References (Assign inside prefab)")]
     public GameObject interactMenu;
+    public Button petButton;
+    public Button feedButton;
     public Slider happinessBar;
     public TextMeshProUGUI levelText;
 
@@ -17,11 +19,12 @@ public class PetBehaviour : MonoBehaviour
     public int maxLevel = 10;
     public int happinessToLevel = 100;  // Each level requires more happiness
 
-    
+
     void Start()
     {
         // Initialize UI
-        UpdateUI();    }
+        UpdateUI();
+    }
 
     // Called by button inside prefab
     public void ToggleInteractMenu()
@@ -52,7 +55,7 @@ public class PetBehaviour : MonoBehaviour
     }
 
     // LEVEL-UP LOGIC
-    private void LevelCheck()
+    public void LevelCheck()
     {
         if (petData.level >= maxLevel) return;
 
@@ -65,7 +68,7 @@ public class PetBehaviour : MonoBehaviour
     }
 
     // Update sliders and text
-    private void UpdateUI()
+    public void UpdateUI()
     {
 
         if (happinessBar != null)
@@ -81,22 +84,22 @@ public class PetBehaviour : MonoBehaviour
 
     //Hunger Bar Section
     [Header("Hunger Bar")]
-    public int food =5;
-    public int maxFood=5 ;
+    public int food = 5;
+    public int maxFood = 5;
     private float hungerDecreaseRate = 60f; // seconds
     public Sprite emptyFood;
     public Sprite fullFood;
     public Image[] foodImages;
-    private float timer =0f;
+    private float timer = 0f;
 
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer >= hungerDecreaseRate)
+        if (timer >= hungerDecreaseRate)
         {
-            timer =0f;
+            timer = 0f;
             food--;
-            if (food==0)
+            if (food == 0)
             {
                 Debug.Log("Pet has died of hunger.");
                 // Handle death screen or deletion here
@@ -105,10 +108,10 @@ public class PetBehaviour : MonoBehaviour
             UpdateFoodUI();
         }
 
-        for (int i = 0; i< foodImages.Length; i++)
+        for (int i = 0; i < foodImages.Length; i++)
         {
-        
-            if(i<food)
+
+            if (i < food)
             {
                 foodImages[i].sprite = fullFood;
             }
@@ -116,10 +119,10 @@ public class PetBehaviour : MonoBehaviour
             {
                 foodImages[i].sprite = emptyFood;
             }
-            
-            if(i<maxFood)
+
+            if (i < maxFood)
             {
-                foodImages[i].enabled =true;
+                foodImages[i].enabled = true;
 
             }
             else
@@ -142,6 +145,23 @@ public class PetBehaviour : MonoBehaviour
         }
     }
 
+    public void ApplyHappiness(int amount)
+    {
+        petData.happiness += amount;
+        if (petData.happiness > happinessToLevel) petData.happiness = happinessToLevel;
+        UpdateUI();
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Something entered trigger: " + other.name);
+
+        if (other.CompareTag("Toy"))
+        {
+            Debug.Log("Toy touched pet: " + petData.petType);
+            ApplyHappiness(10);
+            Destroy(other.gameObject);
+        }
+    }
 
 
     // ---------- OPTIONAL FIREBASE SAVE ----------

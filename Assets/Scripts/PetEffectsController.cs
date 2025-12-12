@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DragonInteraction : MonoBehaviour
+public class PetsEffectsController : MonoBehaviour
 {
     public ParticleSystem heartParticles;
     public ParticleSystem sparkleParticles;

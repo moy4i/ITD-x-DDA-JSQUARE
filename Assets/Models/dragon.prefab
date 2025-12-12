@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3355126866721087053
 RectTransform:
   m_ObjectHideFlags: 0
@@ -50,7 +50,6 @@ GameObject:
   - component: {fileID: 5965766743069781418}
   - component: {fileID: 1378107359620387328}
   - component: {fileID: 1694086248451951376}
-  - component: {fileID: 3621994443394493147}
   m_Layer: 0
   m_Name: Pet
   m_TagString: Untagged
@@ -171,8 +170,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1314902249761855067}
-        m_TargetAssemblyTypeName: DragonInteraction, Assembly-CSharp
+      - m_Target: {fileID: 1180914742610963331}
+        m_TargetAssemblyTypeName: PetsEffectsController, Assembly-CSharp
         m_MethodName: PetDragon
         m_Mode: 1
         m_Arguments:
@@ -183,7 +182,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 6620817921288043368}
+      - m_Target: {fileID: 6974540640523231083}
         m_TargetAssemblyTypeName: PetBehaviour, Assembly-CSharp
         m_MethodName: PetAction
         m_Mode: 1
@@ -195,21 +194,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &3621994443394493147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281810674596167717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8390c04dbf5f01f47a1bb598c39af395, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactMenu: {fileID: 20445094126259018}
-  petButton: {fileID: 1694086248451951376}
-  feedButton: {fileID: 8611252044910739073}
 --- !u!1 &320316741588155431
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,8 +398,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1314902249761855067}
-        m_TargetAssemblyTypeName: DragonInteraction, Assembly-CSharp
+      - m_Target: {fileID: 1180914742610963331}
+        m_TargetAssemblyTypeName: PetsEffectsController, Assembly-CSharp
         m_MethodName: FeedDragon
         m_Mode: 1
         m_Arguments:
@@ -426,7 +410,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6620817921288043368}
+      - m_Target: {fileID: 6974540640523231083}
         m_TargetAssemblyTypeName: PetBehaviour, Assembly-CSharp
         m_MethodName: FeedAction
         m_Mode: 1
@@ -1733,10 +1717,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4325352335490062609}
-  - component: {fileID: 6745903738046621942}
+  - component: {fileID: 6974540640523231083}
+  - component: {fileID: 1180914742610963331}
+  - component: {fileID: 8357512241590709492}
+  - component: {fileID: 8410526464930219863}
   m_Layer: 0
   m_Name: dragon
-  m_TagString: Untagged
+  m_TagString: Dragon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1755,10 +1742,9 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3828213835897925979}
-  - {fileID: 3518923837149260095}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &6745903738046621942
+--- !u!114 &6974540640523231083
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1771,20 +1757,89 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   petData:
-    petType: 
-    level: 0
-    happiness: 0
-    hunger: 0
-  interactMenu: {fileID: 0}
-  happinessBar: {fileID: 0}
-  levelText: {fileID: 0}
+    petType: Dragon
+    level: 1
+    happiness: 50
+    hunger: 20
+  interactMenu: {fileID: 20445094126259018}
+  petButton: {fileID: 1694086248451951376}
+  feedButton: {fileID: 8611252044910739073}
+  happinessBar: {fileID: 2880529916180041314}
+  levelText: {fileID: 950396715860767804}
   maxLevel: 10
   happinessToLevel: 100
-  food: 0
-  maxFood: 0
-  emptyFood: {fileID: 0}
-  fullFood: {fileID: 0}
-  foodImages: []
+  food: 5
+  maxFood: 5
+  emptyFood: {fileID: 21300000, guid: 2e4fbdb8b26256f4abf97de6d8cf8a79, type: 3}
+  fullFood: {fileID: 21300000, guid: f3b96b0b76abc8443aee1dedd7b0d2a9, type: 3}
+  foodImages:
+  - {fileID: 3857192867811947513}
+  - {fileID: 5731107528244996134}
+  - {fileID: 5468365085094551559}
+  - {fileID: 5136083513655527918}
+  - {fileID: 3163523393617316222}
+--- !u!114 &1180914742610963331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6762368706532747972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f75a902ff4cc140b45ace11dfda15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartParticles: {fileID: 5584091483156079700}
+  sparkleParticles: {fileID: 780611294518518841}
+--- !u!54 &8357512241590709492
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6762368706532747972}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &8410526464930219863
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6762368706532747972}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24846093, y: 2.2763343, z: 0.26424056}
+  m_Center: {x: 0.0067023244, y: -0.015316686, z: 0.01615253}
 --- !u!1 &7346659847186675964
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,7 +2304,7 @@ RectTransform:
   m_Father: {fileID: 5796464304269651939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 5.1, y: -0}
   m_SizeDelta: {x: 14.781, y: -0.63}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2291,52 +2346,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &8493721596560302445
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3518923837149260095}
-  - component: {fileID: 1302447148893747806}
-  m_Layer: 0
-  m_Name: ParticleEffect
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3518923837149260095
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8493721596560302445}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.020654961, y: -1.0647738, z: 0.1152}
-  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4325352335490062609}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1302447148893747806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8493721596560302445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e139c9a6463ca43933430caaca849f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heartPrefab: {fileID: 5795120322063215546}
-  sparklePrefab: {fileID: 6744536259367427682}
 --- !u!1 &9136928723210279069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,15 +2638,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2ed1c71828bca7544ad5f44233625615, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6244069552191098945}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2ed1c71828bca7544ad5f44233625615, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1314902249761855067}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2ed1c71828bca7544ad5f44233625615, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6620817921288043368}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2ed1c71828bca7544ad5f44233625615, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4576835295747232322}
   m_SourcePrefab: {fileID: 100100000, guid: 2ed1c71828bca7544ad5f44233625615, type: 3}
 --- !u!4 &3828213835897925979 stripped
 Transform:
@@ -2671,73 +2671,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1314902249761855067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4497790494828276705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a27d05416c9046342bc865244af76d43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heartParticles: {fileID: 5584091483156079700}
-  sparkleParticles: {fileID: 780611294518518841}
---- !u!114 &6620817921288043368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4497790494828276705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6998f6be1e51e4b45ae585b6fea2fa59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  petData:
-    petType: Dragon
-    level: 1
-    happiness: 50
-    hunger: 20
-  interactMenu: {fileID: 20445094126259018}
-  happinessBar: {fileID: 2880529916180041314}
-  levelText: {fileID: 950396715860767804}
-  maxLevel: 10
-  happinessToLevel: 100
-  food: 5
-  maxFood: 5
-  emptyFood: {fileID: 21300000, guid: 2e4fbdb8b26256f4abf97de6d8cf8a79, type: 3}
-  fullFood: {fileID: 21300000, guid: f3b96b0b76abc8443aee1dedd7b0d2a9, type: 3}
-  foodImages:
-  - {fileID: 3857192867811947513}
-  - {fileID: 5731107528244996134}
-  - {fileID: 5468365085094551559}
-  - {fileID: 5136083513655527918}
-  - {fileID: 3163523393617316222}
---- !u!65 &4576835295747232322
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4497790494828276705}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.25686213, y: 0.21797019, z: 0.23860556}
-  m_Center: {x: 6.3736286e-15, y: 0.08087608, z: 0.017212696}
 --- !u!1001 &4440488159379465887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2825,11 +2758,6 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8133894459716354763, guid: 20a41a263b558814b9bf3e2090b69fe7, type: 3}
   m_PrefabInstance: {fileID: 4440488159379465887}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5795120322063215546 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7922868922944949541, guid: 20a41a263b558814b9bf3e2090b69fe7, type: 3}
-  m_PrefabInstance: {fileID: 4440488159379465887}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7084721100778687280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2907,10 +2835,5 @@ ParticleSystem:
 --- !u!4 &3902247150213883577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6086172161211870601, guid: 61d6be4c3e0eca944b0b2eac96f0b597, type: 3}
-  m_PrefabInstance: {fileID: 7084721100778687280}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6744536259367427682 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4596094601742685522, guid: 61d6be4c3e0eca944b0b2eac96f0b597, type: 3}
   m_PrefabInstance: {fileID: 7084721100778687280}
   m_PrefabAsset: {fileID: 0}
