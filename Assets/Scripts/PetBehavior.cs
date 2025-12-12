@@ -19,9 +19,18 @@ public class PetBehaviour : MonoBehaviour
     public int maxLevel = 10;
     public int happinessToLevel = 100;  // Each level requires more happiness
 
+    [Header("Evolution")]
+    public MeshRenderer basePetMeshRenderer;
+    public GameObject evolvedPetModel;
+    private GameObject evolvedPetInstance;
+    public Button evolveButton;
+
 
     void Start()
     {
+        if (evolveButton != null)
+        evolveButton.gameObject.SetActive(false);
+
         // Initialize UI
         UpdateUI();
     }
@@ -64,6 +73,7 @@ public class PetBehaviour : MonoBehaviour
             petData.happiness = 0; // reset happiness for next level
             petData.level++;
             levelText.text = "LVL " + petData.level;
+            CheckEvolveEligibility();
         }
     }
 
@@ -162,6 +172,44 @@ public class PetBehaviour : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+    // EVOLUTION LOGIC
+    public void CheckEvolveEligibility()
+    {
+        if (petData.level >= 10)
+            evolveButton.gameObject.SetActive(true);
+    }
+
+    public void EvolvePet()
+    {
+        // Hide the base model only
+        if (basePetMeshRenderer != null)
+            basePetMeshRenderer.enabled = false;
+
+        // Show evolved model
+        if (evolvedPetInstance == null && evolvedPetModel != null)
+        {
+            evolvedPetInstance = Instantiate(
+            evolvedPetModel,
+            basePetMeshRenderer.transform.position,
+            evolvedPetModel.transform.rotation,   // use prefab's own rotation
+            basePetMeshRenderer.transform.parent
+);
+        }
+        else if (evolvedPetInstance != null)
+        {
+            evolvedPetInstance.SetActive(true);
+        }
+
+        // Hide evolve button
+        evolveButton.gameObject.SetActive(false);
+
+        Debug.Log("Pet evolved!");
+    }
+
+
+
+
 
 
     // ---------- OPTIONAL FIREBASE SAVE ----------
