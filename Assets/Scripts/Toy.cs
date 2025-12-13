@@ -5,7 +5,7 @@ public class Toy : MonoBehaviour
 {
     [Header("Toy Settings")]
     public string targetPetTag;        // "Dragon", "Cat", "Dog"
-    public int happinessAmount = 10;  
+    public int happinessAmount = 30;  
     public float cooldownTime = 5f;
 
     private bool canUse = true;
