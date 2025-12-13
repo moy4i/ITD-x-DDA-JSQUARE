@@ -68,9 +68,28 @@ public class DatabaseController : MonoBehaviour
             showNotificationMessage("Success","User created successfully, please sign in!");
 
             var uid = task.Result.User.UserId;
+            string username = signUpUserName.text;
 
-            Player newPlayer = new Player(uid, "dog");  
-            SavePlayer(newPlayer);
+            // Save basic player info
+            db.Child("Players").Child(uid).Child("id").SetValueAsync(uid);
+            db.Child("Players").Child(uid).Child("username").SetValueAsync(username);
+
+            // Create default pets
+            Pet cat = new Pet("Cat");
+            Pet dog = new Pet("Dog");
+            Pet dragon = new Pet("Dragon");
+
+            db.Child("Players").Child(uid).Child("pets").Child("Cat")
+                .SetRawJsonValueAsync(JsonUtility.ToJson(cat));
+
+            db.Child("Players").Child(uid).Child("pets").Child("Dog")
+                .SetRawJsonValueAsync(JsonUtility.ToJson(dog));
+
+            db.Child("Players").Child(uid).Child("pets").Child("Dragon")
+                .SetRawJsonValueAsync(JsonUtility.ToJson(dragon));
+
+            Debug.Log($"User ID: {uid}");
+
 
 
             Debug.Log($"User ID: {uid}");
@@ -114,7 +133,7 @@ public class DatabaseController : MonoBehaviour
             Debug.Log($"Signed in user UID: {uid}");   
 
             
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainSceneFINAL");
         }
         });
 

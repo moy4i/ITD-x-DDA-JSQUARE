@@ -8,7 +8,6 @@ public class Toy : MonoBehaviour
     public int happinessAmount = 30;  
     public float cooldownTime = 5f;
 
-    private bool canUse = true;
 
     // Reference to ToyManager so toy can despawn itself
     private ToyManager toyManager;

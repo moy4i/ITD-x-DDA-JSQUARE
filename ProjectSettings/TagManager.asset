@@ -7,7 +7,6 @@ TagManager:
   - Dragon
   - Dog
   - Cat
-  - Toy
   layers:
   - Default
   - TransparentFX

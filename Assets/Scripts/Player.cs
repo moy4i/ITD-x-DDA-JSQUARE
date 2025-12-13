@@ -5,12 +5,12 @@ public class Player
 {
     public string id;                // Firebase UID
     public string username;
-    public List<Pet> pets;    // MANY pets
+    public Dictionary<string, Pet> pets;
 
     public Player(string uid, string name)
     {
         id = uid;
         username = name;
-        pets = new List<Pet>();
+        pets = new Dictionary<string, Pet>();
     }
 }

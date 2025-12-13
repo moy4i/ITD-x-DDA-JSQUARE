@@ -9,13 +9,17 @@ public class Pet
     public int level;
     public int happiness;
     public int hunger;
+    public bool isEvolved;
+    public bool isDead;
 
     public Pet(string type)
     {
         petType = type;
         level = 1;
         happiness = 0;
-        hunger = 100;
+        hunger = 1;
+        isEvolved = false;
+        isDead = false;
     }
 
     // Happiness required per level (example)

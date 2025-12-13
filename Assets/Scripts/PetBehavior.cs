@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using Firebase.Database;
+using Firebase.Auth;
+
 
 public class PetBehaviour : MonoBehaviour
 {
@@ -20,7 +23,7 @@ public class PetBehaviour : MonoBehaviour
     public int happinessToLevel = 100;  // Each level requires more happiness
 
     [Header("Evolution")]
-    public MeshRenderer basePetMeshRenderer;
+    public GameObject basePetModel;
     public GameObject evolvedPetModel;
     private GameObject evolvedPetInstance;
     public Button evolveButton;
@@ -50,22 +53,27 @@ public class PetBehaviour : MonoBehaviour
     // PETTING BUTTON
     public void PetAction()
     {
-        petData.happiness += 5;
+        if (isDead) return;
+        petData.happiness += 1;
         LevelCheck();
         UpdateUI();
         Debug.Log("Pet action on object: " + gameObject.name);
 
-        // SaveToFirebase();
+
+        SaveToFirebase();
     }
 
     // FEEDING BUTTON
     public void FeedAction()
     {
+        if (isDead) return;
         food++;
         if (food > maxFood) food = maxFood;
 
         UpdateFoodUI();
         Debug.Log("Fed pet. Hunger now: " + food);
+
+        SaveToFirebase();
     }
 
     // LEVEL-UP LOGIC
@@ -79,6 +87,7 @@ public class PetBehaviour : MonoBehaviour
             petData.level++;
             levelText.text = "LVL " + petData.level;
             CheckEvolveEligibility();
+            SaveToFirebase();
         }
     }
 
@@ -96,7 +105,17 @@ public class PetBehaviour : MonoBehaviour
     }
 
 
+    public void LoadFromFirebase(Pet loadedPet)
+    {
+        petData = loadedPet;
+        UpdateUI();
 
+        if (petData.isEvolved)
+            DoEvolve();
+
+        if (petData.isDead)
+            Die();
+    }
     //Hunger Bar Section
     [Header("Hunger Bar")]
     public int food = 5;
@@ -107,6 +126,12 @@ public class PetBehaviour : MonoBehaviour
     public Image[] foodImages;
     private float timer = 0f;
 
+
+    private IEnumerator DeathRoutine()
+    {
+        yield return new WaitForSeconds(deathDelay);
+        Die();
+    }
     void Update()
     {
         timer += Time.deltaTime;
@@ -114,12 +139,10 @@ public class PetBehaviour : MonoBehaviour
         {
             timer = 0f;
             food--;
-            if (food == 0)
-            {
-                Debug.Log("Pet has died of hunger.");
-                // Handle death screen or deletion here
-                // SaveToFirebase();
-            }
+        if (food == 0 && !isDead)
+        {
+            StartCoroutine(DeathRoutine());
+        }
             UpdateFoodUI();
         }
 
@@ -162,18 +185,17 @@ public class PetBehaviour : MonoBehaviour
 
     public void ApplyHappiness(int amount)
     {
+        if (isDead) return;
         petData.happiness += amount;
         if (petData.happiness > happinessToLevel) petData.happiness = happinessToLevel;
         UpdateUI();
     }
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Something entered trigger: " + other.name);
-
-        if (other.CompareTag("Toy"))
+        Toy toy = other.GetComponent<Toy>();
+        if (toy != null && toy.targetPetTag == petData.petType)
         {
-            Debug.Log("Toy touched pet: " + petData.petType);
-            ApplyHappiness(10);
+            ApplyHappiness(toy.happinessAmount);
             Destroy(other.gameObject);
         }
     }
@@ -188,17 +210,17 @@ public class PetBehaviour : MonoBehaviour
     private void DoEvolve()
     {
         // Hide the base model only
-        if (basePetMeshRenderer != null)
-            basePetMeshRenderer.enabled = false;
+        if (basePetModel != null)
+            basePetModel.SetActive(false);
 
         // Show evolved model
         if (evolvedPetInstance == null && evolvedPetModel != null)
         {
             evolvedPetInstance = Instantiate(
-                evolvedPetModel,
-                basePetMeshRenderer.transform.position,
-                evolvedPetModel.transform.rotation,
-                basePetMeshRenderer.transform.parent
+            evolvedPetModel,
+            basePetModel.transform.position,
+            evolvedPetModel.transform.rotation,
+            basePetModel.transform.parent
             );
         }
         else if (evolvedPetInstance != null)
@@ -208,6 +230,8 @@ public class PetBehaviour : MonoBehaviour
 
         evolveButton.gameObject.SetActive(false);
 
+        petData.isEvolved = true;
+        SaveToFirebase();
         Debug.Log("Pet evolved!");
     }
 
@@ -222,8 +246,8 @@ public class PetBehaviour : MonoBehaviour
     {
         if (evolutionParticles != null) 
         {
-            evolutionParticles.transform.position = basePetMeshRenderer.transform.position;
-            evolutionParticles.transform.SetParent(basePetMeshRenderer.transform.parent, true);
+            evolutionParticles.transform.position = basePetModel.transform.position;
+            evolutionParticles.transform.SetParent(basePetModel.transform.parent, true);
             evolutionParticles.Play();
         }
 
@@ -237,19 +261,56 @@ public class PetBehaviour : MonoBehaviour
 
     }
 
+    [Header("Death Settings")]
+    public float deathDelay = 3f;
+    private bool isDead = false;
+    private void Die()
+    {
+        if (isDead) return;
+        isDead = true;
+        transform.localRotation *= Quaternion.Euler(-90f, 0f, 0f);
+
+        // Apply dead color to base pet
+        if (basePetModel != null)
+            ApplyDeadVisual(basePetModel);
+
+        // Apply dead color to evolved pet (if exists)
+        if (evolvedPetInstance != null)
+            ApplyDeadVisual(evolvedPetInstance);
+
+        interactMenu.SetActive(false);
+
+        Debug.Log("Pet has died.");
+        petData.isDead = true;
+        SaveToFirebase();
+    }
+
+    [Header("Death Visuals")]
+    public Color deadColor = new Color(0.6f, 0.1f, 0.1f);
+    private void ApplyDeadVisual(GameObject root)
+    {
+        Renderer[] renderers = root.GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in renderers)
+        {
+            if (r.material != null)
+                    r.material.color = deadColor;
+        }
+
+        
+     }
 
 
-
-
-    // ---------- OPTIONAL FIREBASE SAVE ----------
-    /*
     private void SaveToFirebase()
     {
-        string uid = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
-        DatabaseReference db = FirebaseDatabase.DefaultInstance.RootReference;
-        string petIndex = "0"; // depends how many pets user has
+        if (Firebase.Auth.FirebaseAuth.DefaultInstance.CurrentUser == null) return;
 
-        db.Child("Players").Child(uid).Child("pets").Child(petIndex).SetRawJsonValueAsync(JsonUtility.ToJson(petData));
+        string uid = Firebase.Auth.FirebaseAuth.DefaultInstance.CurrentUser.UserId;
+        DatabaseReference db = Firebase.Database.FirebaseDatabase.DefaultInstance.RootReference;
+
+        db.Child("Players")
+        .Child(uid)
+        .Child("pets")
+        .Child(petData.petType)
+        .SetRawJsonValueAsync(JsonUtility.ToJson(petData));
     }
-    */
 }

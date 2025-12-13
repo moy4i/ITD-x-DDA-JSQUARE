@@ -96,11 +96,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6898226940524622629}
   - component: {fileID: 131026989743051476}
+  - component: {fileID: -633764887122590689}
   - component: {fileID: 1999626908409097332}
   - component: {fileID: 3325787778959975465}
   m_Layer: 0
   m_Name: BallOfYarn
-  m_TagString: Toy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,6 +149,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-633764887122590689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8663808404926545446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e241867131a36946a5bed13ec8b788d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPetTag: Cat
+  happinessAmount: 20
+  cooldownTime: 5
 --- !u!114 &1999626908409097332
 MonoBehaviour:
   m_ObjectHideFlags: 0
