@@ -25,6 +25,11 @@ public class PetBehaviour : MonoBehaviour
     private GameObject evolvedPetInstance;
     public Button evolveButton;
 
+    [Header("Evolution Settings")]
+    public ParticleSystem evolutionParticles;   // Assign your particle prefab here
+    public float evolutionDelay = 2.5f;      // Seconds before swapping models
+
+
 
     void Start()
     {
@@ -180,7 +185,7 @@ public class PetBehaviour : MonoBehaviour
             evolveButton.gameObject.SetActive(true);
     }
 
-    public void EvolvePet()
+    private void DoEvolve()
     {
         // Hide the base model only
         if (basePetMeshRenderer != null)
@@ -190,23 +195,47 @@ public class PetBehaviour : MonoBehaviour
         if (evolvedPetInstance == null && evolvedPetModel != null)
         {
             evolvedPetInstance = Instantiate(
-            evolvedPetModel,
-            basePetMeshRenderer.transform.position,
-            evolvedPetModel.transform.rotation,   // use prefab's own rotation
-            basePetMeshRenderer.transform.parent
-);
+                evolvedPetModel,
+                basePetMeshRenderer.transform.position,
+                evolvedPetModel.transform.rotation,
+                basePetMeshRenderer.transform.parent
+            );
         }
         else if (evolvedPetInstance != null)
         {
             evolvedPetInstance.SetActive(true);
         }
 
-        // Hide evolve button
         evolveButton.gameObject.SetActive(false);
 
         Debug.Log("Pet evolved!");
     }
 
+
+    public void EvolvePet()
+    {
+        StartCoroutine(EvolutionParticlesRoutine());
+    }
+
+
+    private IEnumerator EvolutionParticlesRoutine()
+    {
+        if (evolutionParticles != null) 
+        {
+            evolutionParticles.transform.position = basePetMeshRenderer.transform.position;
+            evolutionParticles.transform.SetParent(basePetMeshRenderer.transform.parent, true);
+            evolutionParticles.Play();
+        }
+
+        yield return new WaitForSeconds(evolutionDelay);
+
+        // Call the ORIGINAL evolve logic AFTER delay
+        DoEvolve();
+
+        // Let particles continue briefly after evolution
+        yield return new WaitForSeconds(2f);
+
+    }
 
 
 
