@@ -18,7 +18,6 @@ public class DatabaseController : MonoBehaviour
     
     public TextMeshProUGUI notif_Title_Text, notif_Message_Text;
 
-
     public void OpenLoginPanel()
     {
         loginPanel.SetActive(true);

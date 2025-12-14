@@ -6802,6 +6802,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewSimEnvironment 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7576867131100388943, guid: 5eb88d40ddbdbbb4da0b2b55526bd6e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8252730913304231018, guid: 5eb88d40ddbdbbb4da0b2b55526bd6e6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

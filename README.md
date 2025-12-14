@@ -1,4 +1,4 @@
-# Interactive 3D Experience – README & Walkthrough
+# ITD – README
 
 ## 1. Project Title
 *ITD X DDA ASG1 – PetPals AR*
@@ -114,6 +114,8 @@ Your goal is to:
 ---
 
 ## 8. Known Limitations & Bugs
+- Game progress does not save when exiting and logging in back to the game.
+- Petting and feeding particles do not appear when petting and feeding the dragon.
 
 ---
 

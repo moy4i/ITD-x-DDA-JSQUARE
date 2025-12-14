@@ -8,22 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:44333458132:ios:7bc558261f171664c19141",
+        "mobilesdk_app_id": "1:44333458132:android:412b9efec21cf592c19141",
         "android_client_info": {
-          "package_name": "JSquare"
+          "package_name": "com.JSquare.PetPalsAR"
         }
       },
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyACtS7vrhYbNMXRuM7Qt7AfIbALFYRWesA"
+          "current_key": "AIzaSyC1a3Sa2hDzLe7aTpbeFoD5UFAITUamBU0"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 0
-        },
         "appinvite_service": {
-          "status": 1
+          "other_platform_oauth_client": []
         }
       }
     }
