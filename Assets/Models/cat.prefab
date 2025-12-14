@@ -86,7 +86,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.03
+  m_Value: 0.01
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
   m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
@@ -15694,8 +15694,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   petData:
     petType: Cat
-    level: 1
-    happiness: 0
+    level: 2
+    happiness: 1
     isEvolved: 0
     isDead: 0
   interactMenu: {fileID: 8205200116342652145}
@@ -15710,7 +15710,7 @@ MonoBehaviour:
   evolveButton: {fileID: 5930763032977828757}
   evolutionParticles: {fileID: 5942364342034951371}
   evolutionDelay: 2.5
-  food: 1
+  food: 3
   maxFood: 5
   emptyFood: {fileID: 21300000, guid: 2e4fbdb8b26256f4abf97de6d8cf8a79, type: 3}
   fullFood: {fileID: 21300000, guid: f3b96b0b76abc8443aee1dedd7b0d2a9, type: 3}

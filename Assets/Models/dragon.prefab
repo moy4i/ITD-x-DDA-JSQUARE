@@ -11918,7 +11918,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.48
+  m_Value: 0.15
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -16902,7 +16902,7 @@ MonoBehaviour:
   petData:
     petType: Dragon
     level: 1
-    happiness: 0
+    happiness: 15
     isEvolved: 0
     isDead: 0
   interactMenu: {fileID: 20445094126259018}
@@ -16917,7 +16917,7 @@ MonoBehaviour:
   evolveButton: {fileID: 3117339664965920342}
   evolutionParticles: {fileID: 7277814448382852269}
   evolutionDelay: 2.5
-  food: 1
+  food: 3
   maxFood: 5
   emptyFood: {fileID: 21300000, guid: 2e4fbdb8b26256f4abf97de6d8cf8a79, type: 3}
   fullFood: {fileID: 21300000, guid: f3b96b0b76abc8443aee1dedd7b0d2a9, type: 3}

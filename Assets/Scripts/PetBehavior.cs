@@ -40,9 +40,8 @@ public class PetBehaviour : MonoBehaviour
     {
         if (evolveButton != null)
         evolveButton.gameObject.SetActive(false);
-
+        UpdateFoodUI();
         // Initialize UI
-        UpdateUI();
     }
 
     // Called by button inside prefab
@@ -107,7 +106,7 @@ public class PetBehaviour : MonoBehaviour
     public void LoadFromFirebase(Pet loadedPet)
     {
         petData = loadedPet;
-        hasLoadedFromFirebase = true;
+        
 
         UpdateUI();
 
@@ -116,6 +115,8 @@ public class PetBehaviour : MonoBehaviour
 
         if (petData.isDead)
             Die();
+
+        hasLoadedFromFirebase = true;
     }
 
     //Hunger Bar Section
@@ -214,6 +215,7 @@ public class PetBehaviour : MonoBehaviour
 
     private void DoEvolve()
     {
+        if (!hasLoadedFromFirebase) return;
         // Hide the base model only
         if (basePetModel != null)
             basePetModel.SetActive(false);
@@ -271,6 +273,7 @@ public class PetBehaviour : MonoBehaviour
     private bool isDead = false;
     private void Die()
     {
+        if (!hasLoadedFromFirebase) return;
         if (isDead) return;
         isDead = true;
         basePetModel.transform.localRotation *= Quaternion.Euler(-90f, 0f, 0f);
@@ -307,10 +310,10 @@ public class PetBehaviour : MonoBehaviour
 
     private void SaveToFirebase()
     {
-        if (Firebase.Auth.FirebaseAuth.DefaultInstance.CurrentUser == null) return;
+        if (FirebaseAuth.DefaultInstance.CurrentUser == null) return;
 
-        string uid = Firebase.Auth.FirebaseAuth.DefaultInstance.CurrentUser.UserId;
-        DatabaseReference db = Firebase.Database.FirebaseDatabase.DefaultInstance.RootReference;
+        string uid = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
+        DatabaseReference db = FirebaseDatabase.DefaultInstance.RootReference;
 
         db.Child("Players")
         .Child(uid)
