@@ -1908,7 +1908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1274439654325652743
 Transform:
   m_ObjectHideFlags: 0
@@ -4325,9 +4325,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   petData:
     petType: Dog
-    level: 9
-    happiness: 99
-    hunger: 20
+    level: 1
+    happiness: 0
     isEvolved: 0
     isDead: 0
   interactMenu: {fileID: 4104276107499468032}
@@ -5427,7 +5426,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.18
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

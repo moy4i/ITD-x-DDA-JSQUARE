@@ -9214,6 +9214,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553937779}
   m_CullTransparentMesh: 1
+--- !u!1 &1588072420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1588072422}
+  - component: {fileID: 1588072421}
+  m_Layer: 0
+  m_Name: PetLoadController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1588072421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588072420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef1b11e219bf6174c961f753a0d2b5c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  petsInScene:
+  - {fileID: 31732398653004667, guid: c3359eb9e08cfa64b89e3449d2fc8e46, type: 3}
+  - {fileID: 5471214698963372544, guid: 397c1e5e75f80244087643a10bc623fc, type: 3}
+  - {fileID: 6974540640523231083, guid: ecb7ce827b1c790469e6f35c8dd6ce7b, type: 3}
+--- !u!4 &1588072422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588072420}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.4405209, y: 0.30457014, z: 0.2953157}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1644526437
 GameObject:
   m_ObjectHideFlags: 0
@@ -26892,3 +26940,4 @@ SceneRoots:
   - {fileID: 2099970469}
   - {fileID: 331264285}
   - {fileID: 1157368821}
+  - {fileID: 1588072422}

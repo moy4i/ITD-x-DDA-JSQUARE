@@ -174,6 +174,24 @@ public class DatabaseController : MonoBehaviour
         db = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
+    public void EnsureAllPetsExist(string uid)
+    {
+        string[] petTypes = { "Cat", "Dog", "Dragon" };
 
+        foreach (string pet in petTypes)
+        {
+            db.Child("Players").Child(uid).Child("pets").Child(pet)
+                .GetValueAsync().ContinueWithOnMainThread(task =>
+                {
+                    if (!task.Result.Exists)
+                    {
+                        Pet newPet = new Pet(pet);
+                        string json = JsonUtility.ToJson(newPet);
+                        db.Child("Players").Child(uid).Child("pets").Child(pet)
+                            .SetRawJsonValueAsync(json);
+                    }
+                });
+        }
+    }
 
 }

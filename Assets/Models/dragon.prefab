@@ -11918,7 +11918,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.48
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -16901,9 +16901,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   petData:
     petType: Dragon
-    level: 9
-    happiness: 99
-    hunger: 20
+    level: 1
+    happiness: 0
     isEvolved: 0
     isDead: 0
   interactMenu: {fileID: 20445094126259018}
@@ -17639,7 +17638,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
   m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}

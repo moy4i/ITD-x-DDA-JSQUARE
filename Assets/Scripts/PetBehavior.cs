@@ -10,6 +10,8 @@ public class PetBehaviour : MonoBehaviour
 {
     [Header("Pet Data")]
     public Pet petData;     // Assigned by your spawner or from Firebase
+    private bool hasLoadedFromFirebase = false;
+
 
     [Header("UI References (Assign inside prefab)")]
     public GameObject interactMenu;
@@ -100,14 +102,13 @@ public class PetBehaviour : MonoBehaviour
 
         if (levelText != null)
             levelText.text = petData.level.ToString();
-
-        Debug.Log("UI update: Happiness=" + petData.happiness + " Hunger=" + petData.hunger);
     }
-
 
     public void LoadFromFirebase(Pet loadedPet)
     {
         petData = loadedPet;
+        hasLoadedFromFirebase = true;
+
         UpdateUI();
 
         if (petData.isEvolved)
@@ -116,6 +117,7 @@ public class PetBehaviour : MonoBehaviour
         if (petData.isDead)
             Die();
     }
+
     //Hunger Bar Section
     [Header("Hunger Bar")]
     public int food = 5;
@@ -134,6 +136,9 @@ public class PetBehaviour : MonoBehaviour
     }
     void Update()
     {
+
+        if (!hasLoadedFromFirebase) return;
+
         timer += Time.deltaTime;
         if (timer >= hungerDecreaseRate)
         {
@@ -311,6 +316,6 @@ public class PetBehaviour : MonoBehaviour
         .Child(uid)
         .Child("pets")
         .Child(petData.petType)
-        .SetRawJsonValueAsync(JsonUtility.ToJson(petData));
+        .SetRawJsonValueAsync(JsonUtility.ToJson(new PetFirebaseData(petData)));
     }
 }
