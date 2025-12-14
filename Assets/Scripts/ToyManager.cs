@@ -31,7 +31,7 @@ public void SpawnToy(string petTag)
 
     // Spawn in front of camera
     Vector3 spawnPos = Camera.main.transform.position + Camera.main.transform.forward * 0.5f;
-    currentToy = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity,SimPrefab);
+    currentToy = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity, SimPrefab);
 
     // Give the toy a reference back to this manager
     Toy toyScript = currentToy.GetComponent<Toy>();
