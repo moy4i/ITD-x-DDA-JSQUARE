@@ -13,6 +13,7 @@ Main features include:
 - AR poster scanning to spawn pets
 - Pet system (happiness/XP level, hunger, levelling up)
 - Toys interaction system
+- Pet death system
 
 ---
 
@@ -71,12 +72,12 @@ Main features include:
 - Press *Next* to move through the pages.  
 - Press *Start Playing* to begin the game.  
 - Click *X* on any page to skip the tutorial.  
-- You can reopen it anytime via *Hamburger Menu → Tutorial*.
+- You can reopen it anytime via *3-line Menu → Tutorial*.
 
 ### 5.2 Objective: Evolve at least 1 pet
 Your goal is to:
 1. Increase the pet's happiness level
-2. Reach Reach pet happiness level 10 to unlock the evolution
+2. Reach pet happiness level 10 to unlock the evolution
 3. Evolve the pet
 
 ---
@@ -84,7 +85,7 @@ Your goal is to:
 ## 6. Pet System
 
 ### 6.1 Happiness
-- Petting increases happiness by +10.  
+- Petting increases happiness by +1.  
 - Toys increase happiness based on toy type.
 - When happiness reaches the required amount, the pet levels up.
 
@@ -93,6 +94,10 @@ Your goal is to:
 - Hunger bar decreases by *1 bar per minute*.  
 - Feeding restores *1 bar*.  
 - If hunger reaches 0, the pet dies.
+
+### 6.3 Death
+- If hunger bar reaches 0, a 3 second timer begins.
+- If the pet is not fed within these 3 seconds the pet dies and is permanently gone.
 
 ---
 
@@ -104,7 +109,7 @@ Your goal is to:
 3. Drag the toy around the scene.  
 4. When the toy touches the pet, the toy disappears.  
 5. The pet gains happiness.  
-6. The toy enters a cooldown (e.g., 3 hours).
+6. The toy enters a cooldown of 45 seconds before it can be used again.
 
 ---
 

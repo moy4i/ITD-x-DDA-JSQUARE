@@ -89,10 +89,6 @@ public class DatabaseController : MonoBehaviour
                 .SetRawJsonValueAsync(JsonUtility.ToJson(dragon));
 
             Debug.Log($"User ID: {uid}");
-
-
-
-            Debug.Log($"User ID: {uid}");
         }
 
         
@@ -101,44 +97,66 @@ public class DatabaseController : MonoBehaviour
 
     public void SignIn()
     {
-        if (string.IsNullOrEmpty(SignInEmailInput.text)&&string.IsNullOrEmpty(SignInPasswordInput.text))
-            {   
-                showNotificationMessage("Error","Email or Password is empty");
-                return;
+        if (string.IsNullOrEmpty(SignInEmailInput.text) ||
+            string.IsNullOrEmpty(SignInPasswordInput.text))
+        {
+            showNotificationMessage("Error", "Email or Password is empty");
+            return;
+        }
+
+        FirebaseAuth.DefaultInstance
+            .SignInWithEmailAndPasswordAsync(
+                SignInEmailInput.text,
+                SignInPasswordInput.text
+            )
+            .ContinueWithOnMainThread(task =>
+            {
+                if (task.IsFaulted || task.IsCanceled)
+                {
+                    Debug.LogError("Error signing in user!");
+                    showNotificationMessage("Error", "Error signing in user!");
+                    return;
+                }
+
+                FirebaseUser user = task.Result.User;
+                Debug.Log("Signed in user UID: " + user.UserId);
+
+                StartCoroutine(EnsurePetsThenLoadScene(user.UserId));
+            });
+
+            IEnumerator EnsurePetsThenLoadScene(string uid)
+            {
+                string[] petTypes = { "Cat", "Dog", "Dragon" };
+                int completed = 0;
+
+                foreach (string pet in petTypes)
+                {
+                    db.Child("Players").Child(uid).Child("pets").Child(pet)
+                        .GetValueAsync()
+                        .ContinueWithOnMainThread(task =>
+                        {
+                            if (!task.Result.Exists)
+                            {
+                                Pet newPet = new Pet(pet);
+                                string json = JsonUtility.ToJson(newPet);
+                                db.Child("Players").Child(uid).Child("pets").Child(pet)
+                                    .SetRawJsonValueAsync(json);
+                            }
+
+                            completed++;
+                        });
+                }
+
+                // Wait until all 3 checks complete
+                yield return new WaitUntil(() => completed == petTypes.Length);
+
+                Debug.Log("All pets verified. Loading game scene.");
+
+                SceneManager.LoadScene("MainSceneFINAL");
             }
-        
-       
-       
-       var createTask= FirebaseAuth.DefaultInstance.SignInWithEmailAndPasswordAsync(SignInEmailInput.text, SignInPasswordInput.text);
 
-       createTask.ContinueWithOnMainThread(task =>
-       {
-        if (string.IsNullOrEmpty(SignInEmailInput.text)&&string.IsNullOrEmpty(SignInPasswordInput.text))
-        {   
-            showNotificationMessage("Error","Email or Password is empty");
-            return;
-        }
-        if (task.IsFaulted || task.IsCanceled)
-        {
-            Debug.LogError("Error signing in user!");
-            showNotificationMessage("Error","Error signing in user!");
-            return;
-        }
-        if (task.IsCompleted)
-        {
-            Debug.Log("User signed in successfully!");
-            showNotificationMessage("Success","User signed in successfully!");
-
-            var uid = task.Result.User.UserId;
-            Debug.Log($"Signed in user UID: {uid}");   
-
-            
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MainSceneFINAL");
-        }
-        });
-
-        
     }
+
 
     public void CloseNotifPanel()
     {
