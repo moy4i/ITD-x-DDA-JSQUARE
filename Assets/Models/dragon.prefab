@@ -863,19 +863,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265907306277970961}
-  m_LocalRotation: {x: 0.00000023180732, y: -0.7071079, z: -0.70710576, w: 0.00000023180799}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0007}
-  m_LocalScale: {x: 0.9070667, y: 0.90706646, z: 0.90706646}
+  m_LocalRotation: {x: 2.8421706e-14, y: -1, z: -0, w: 0.00000032782552}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.907067, y: 0.9070667, z: 0.9070667}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7583813665438329518}
   - {fileID: 3355126866721087053}
   - {fileID: 3922587288669243739}
-  m_Father: {fileID: 3828213835897925979}
+  m_Father: {fileID: 753879524723511716}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: -180}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0}
+  m_AnchoredPosition: {x: 2.1316282e-14, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4331813693608980388
@@ -6047,7 +6047,6 @@ GameObject:
   - component: {fileID: 3828213835897925979}
   - component: {fileID: 184462481075306238}
   - component: {fileID: 2696425753908709940}
-  - component: {fileID: 6244069552191098945}
   m_Layer: 0
   m_Name: DragonForSketchfab
   m_TagString: Untagged
@@ -6064,14 +6063,11 @@ Transform:
   m_GameObject: {fileID: 4497790494828276705}
   serializedVersion: 2
   m_LocalRotation: {x: -0.70710576, y: -0, z: -0, w: 0.7071079}
-  m_LocalPosition: {x: 0, y: -1, z: 0.09808873}
+  m_LocalPosition: {x: 0, y: 0, z: -0.084}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6898173292166351924}
-  - {fileID: 1205734978876505336}
-  - {fileID: 3902247150213883577}
-  m_Father: {fileID: 4325352335490062609}
+  m_Children: []
+  m_Father: {fileID: 753879524723511716}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &184462481075306238
 MeshFilter:
@@ -6129,28 +6125,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &6244069552191098945
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4497790494828276705}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 66c9b83cadbb7af4fa872ced2f9648c5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4614733707857330159
 GameObject:
   m_ObjectHideFlags: 0
@@ -6359,6 +6333,64 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &4886455479577618970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 753879524723511716}
+  - component: {fileID: 2115573157554699679}
+  m_Layer: 0
+  m_Name: DragonModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &753879524723511716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4886455479577618970}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3828213835897925979}
+  - {fileID: 6898173292166351924}
+  - {fileID: 1205734978876505336}
+  - {fileID: 3902247150213883577}
+  m_Father: {fileID: 4325352335490062609}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2115573157554699679
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4886455479577618970}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 66c9b83cadbb7af4fa872ced2f9648c5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5188757845292598311
 GameObject:
   m_ObjectHideFlags: 0
@@ -6542,7 +6574,7 @@ Transform:
   m_GameObject: {fileID: 5595489425024289229}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.002, y: -1.1246, z: -0.02509}
+  m_LocalPosition: {x: 0, y: -1.1246, z: 0}
   m_LocalScale: {x: 0.165915, y: 0.165915, z: 0.165915}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6785,12 +6817,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5795120322063215546}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0000015199182, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.09808849, z: -0.086000256}
-  m_LocalScale: {x: 1.1154382, y: 1.1154383, z: 1.1154383}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -1.086, z: 0}
+  m_LocalScale: {x: 1.1154381, y: 1.1154385, z: 1.1154385}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3828213835897925979}
+  m_Father: {fileID: 753879524723511716}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &5584091483156079700
 ParticleSystem:
@@ -11952,12 +11984,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6744536259367427682}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0000015199182, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0070000007, y: 0.076, z: -0.141}
-  m_LocalScale: {x: 0.96329737, y: 0.96329737, z: 0.96329737}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.0070000007, y: -1.1409998, z: 0}
+  m_LocalScale: {x: 0.9632973, y: 0.96329737, z: 0.96329737}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3828213835897925979}
+  m_Father: {fileID: 753879524723511716}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &780611294518518841
 ParticleSystem:
@@ -16850,7 +16882,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 3828213835897925979}
+  - {fileID: 753879524723511716}
   - {fileID: 3679727327045556982}
   - {fileID: 1206300407315060679}
   m_Father: {fileID: 0}
@@ -16869,8 +16901,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   petData:
     petType: Dragon
-    level: 1
-    happiness: 0
+    level: 9
+    happiness: 99
     hunger: 20
     isEvolved: 0
     isDead: 0
@@ -16886,7 +16918,7 @@ MonoBehaviour:
   evolveButton: {fileID: 3117339664965920342}
   evolutionParticles: {fileID: 7277814448382852269}
   evolutionDelay: 2.5
-  food: 3
+  food: 1
   maxFood: 5
   emptyFood: {fileID: 21300000, guid: 2e4fbdb8b26256f4abf97de6d8cf8a79, type: 3}
   fullFood: {fileID: 21300000, guid: f3b96b0b76abc8443aee1dedd7b0d2a9, type: 3}

@@ -268,7 +268,7 @@ public class PetBehaviour : MonoBehaviour
     {
         if (isDead) return;
         isDead = true;
-        transform.localRotation *= Quaternion.Euler(-90f, 0f, 0f);
+        basePetModel.transform.localRotation *= Quaternion.Euler(-90f, 0f, 0f);
 
         // Apply dead color to base pet
         if (basePetModel != null)

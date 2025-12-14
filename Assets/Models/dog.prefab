@@ -113,7 +113,7 @@ Transform:
   m_GameObject: {fileID: 344011941193272910}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.01109, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1918,7 +1918,7 @@ Transform:
   m_GameObject: {fileID: 1937788851668965309}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029802318}
-  m_LocalPosition: {x: 0, y: 0.077, z: 0}
+  m_LocalPosition: {x: 0, y: -0.085, z: 0.152}
   m_LocalScale: {x: 14.970729, y: 14.970729, z: 14.970729}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2944,13 +2944,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3052149505903048802}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.305, z: -0.008999974}
+  m_LocalScale: {x: 2.1328824, y: 2.1328824, z: 2.1328824}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5433682923366102551}
-  m_Father: {fileID: 811775578221849685}
+  m_Father: {fileID: 5497569288338801713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3116780879767388473
 GameObject:
@@ -3986,7 +3986,7 @@ Transform:
   m_GameObject: {fileID: 4099573826611574660}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.01109, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4121,7 +4121,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: -180}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.0023500912}
+  m_AnchoredPosition: {x: 0, y: -0.002350092}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8246670127712879523
@@ -4307,8 +4307,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9017571986234679440}
-  - {fileID: 5861731482632543321}
   - {fileID: 9168739876574490716}
+  - {fileID: 5497569288338801713}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5471214698963372544
@@ -4325,8 +4325,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   petData:
     petType: Dog
-    level: 1
-    happiness: 0
+    level: 9
+    happiness: 99
     hunger: 20
     isEvolved: 0
     isDead: 0
@@ -4337,12 +4337,12 @@ MonoBehaviour:
   levelText: {fileID: 2500188205271609855}
   maxLevel: 10
   happinessToLevel: 100
-  basePetModel: {fileID: 5816089988516890387}
-  evolvedPetModel: {fileID: 3052149505903048802}
+  basePetModel: {fileID: 1937788851668965309}
+  evolvedPetModel: {fileID: 7300006336519076675}
   evolveButton: {fileID: 3929099088027164744}
   evolutionParticles: {fileID: 480968111671693521}
   evolutionDelay: 2.5
-  food: 3
+  food: 1
   maxFood: 5
   emptyFood: {fileID: 21300000, guid: 2e4fbdb8b26256f4abf97de6d8cf8a79, type: 3}
   fullFood: {fileID: 21300000, guid: f3b96b0b76abc8443aee1dedd7b0d2a9, type: 3}
@@ -5613,7 +5613,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9017571986234679440}
   - component: {fileID: 4649691191105795744}
-  - component: {fileID: 3889596094671042476}
   m_Layer: 0
   m_Name: dogmodel
   m_TagString: Untagged
@@ -5662,44 +5661,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3889596094671042476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5816089988516890387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6998f6be1e51e4b45ae585b6fea2fa59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  petData:
-    petType: 
-    level: 0
-    happiness: 0
-    hunger: 0
-    isEvolved: 0
-    isDead: 0
-  interactMenu: {fileID: 0}
-  petButton: {fileID: 0}
-  feedButton: {fileID: 0}
-  happinessBar: {fileID: 0}
-  levelText: {fileID: 0}
-  maxLevel: 10
-  happinessToLevel: 100
-  basePetModel: {fileID: 0}
-  evolvedPetModel: {fileID: 0}
-  evolveButton: {fileID: 0}
-  evolutionParticles: {fileID: 0}
-  evolutionDelay: 2.5
-  food: 5
-  maxFood: 5
-  emptyFood: {fileID: 0}
-  fullFood: {fileID: 0}
-  foodImages: []
-  deathDelay: 3
-  deadColor: {r: 0.6, g: 0.1, b: 0.1, a: 1}
 --- !u!1 &5829708593447923087
 GameObject:
   m_ObjectHideFlags: 0
@@ -11434,7 +11395,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.00000025288114, y: 0.7071068, z: 0.7071068, w: -0.00000025288114}
   m_LocalPosition: {x: -0.010500024, y: -0.21279979, z: 0.108505644}
-  m_LocalScale: {x: 1.4449502, y: 1.4449497, z: 1.4449497}
+  m_LocalScale: {x: 1.4449505, y: 1.4449495, z: 1.4449495}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9017571986234679440}
@@ -16457,6 +16418,38 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!1 &7300006336519076675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5497569288338801713}
+  m_Layer: 0
+  m_Name: evolvedDog
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5497569288338801713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7300006336519076675}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.074, z: 0.281}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5861731482632543321}
+  m_Father: {fileID: 811775578221849685}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7431979876489618961
 GameObject:
   m_ObjectHideFlags: 0
@@ -16484,7 +16477,7 @@ Transform:
   m_GameObject: {fileID: 7431979876489618961}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.01109, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17713,8 +17706,8 @@ Transform:
   m_GameObject: {fileID: 8335416045366762232}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00000025288114, y: 0.7071068, z: 0.7071068, w: -0.00000025288114}
-  m_LocalPosition: {x: 0, y: -0.13030006, z: 0.14163816}
-  m_LocalScale: {x: 1.6731597, y: 1.6731608, z: 1.6731608}
+  m_LocalPosition: {x: 0, y: -0.13030005, z: 0.14163816}
+  m_LocalScale: {x: 1.6731597, y: 1.673161, z: 1.673161}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9017571986234679440}
